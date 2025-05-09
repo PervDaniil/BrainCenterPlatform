@@ -27,7 +27,7 @@ const courses = [
     lessons: 24,
     duration: "8 weeks",
     description: "Master essential vocabulary, grammar, and conversation skills for everyday situations.",
-    image: "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://storage.googleapis.com/schoolnet-content/blog/wp-content/uploads/2022/07/How-to-Learn-English-Speaking-at-Home.jpg",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const courses = [
     lessons: 30,
     duration: "10 weeks",
     description: "Develop professional communication skills for meetings, presentations, and business correspondence.",
-    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://expressenglish.ae/wp-content/uploads/2022/02/tips-improve-english.jpg",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const courses = [
     lessons: 18,
     duration: "6 weeks",
     description: "Learn advanced functions, data analysis, visualization, and automation with Excel.",
-    image: "https://images.pexels.com/photos/6238297/pexels-photo-6238297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://www.computerworld.com/wp-content/uploads/2025/04/1656594-0-42121300-1744011426-excel-cheat-sheet-primary-2000px.jpg?quality=50&strip=all",
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const courses = [
     lessons: 36,
     duration: "12 weeks",
     description: "Build a solid foundation in Python programming with hands-on projects and exercises.",
-    image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://ict-trainings.com/storage/app/public/course/banner_627a19c07242f.jpg",
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ const courses = [
     lessons: 40,
     duration: "14 weeks",
     description: "Comprehensive Java programming course covering OOP, data structures, and application development.",
-    image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://media.licdn.com/dms/image/v2/D5612AQEuigHgctxKHA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1705043571469?e=2147483647&v=beta&t=ExGGln-13OGGN6BiwTUw-6SdKFWbzvF0S3L0KnbJXps",
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ const courses = [
     lessons: 15,
     duration: "5 weeks",
     description: "Create stunning presentations with advanced design techniques and effective storytelling.",
-    image: "https://images.pexels.com/photos/3153204/pexels-photo-3153204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://www.computerworld.com/wp-content/uploads/2025/04/1647230-0-34259700-1744011300-powerpoint-cheat-sheet-primary-2000px.jpg?quality=50&strip=all&w=1024",
   },
 ];
 

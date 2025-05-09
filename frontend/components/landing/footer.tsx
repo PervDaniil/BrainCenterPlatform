@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { 
-  GraduationCap, 
+  BrainIcon, 
   Mail, 
   MapPin, 
   Phone, 
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <GraduationCap className="h-8 w-8 text-primary" />
+              <BrainIcon className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold">Brain Center</span>
             </div>
             <p className="text-muted-foreground mb-6">
@@ -96,12 +96,12 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-primary mt-0.5" />
                 <span className="text-muted-foreground">
-                  123 Education Street, Learning City, 10001
+                  2A Nekrasova street, Stantsiya Ivanovka, Chuy province 725009
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-primary" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">+996 999 999 999</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-primary" />

@@ -41,7 +41,7 @@ export default function About() {
             </h2>
             
             <p className="text-lg text-muted-foreground mb-6">
-              Founded in 2015, Brain Center has been dedicated to providing
+              Founded in st. Ivanovka in 2022, Brain Center has been dedicated to providing
               high-quality education that bridges the gap between academic
               knowledge and practical skills. Our mission is to empower students
               with the tools they need to succeed in an increasingly competitive
@@ -73,7 +73,7 @@ export default function About() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="https://keiin.kg/wp-content/uploads/2022/07/IMG_15822-768x512-1.jpg"
                 alt="Students learning at Brain Center"
                 width={600}
                 height={400}
@@ -82,7 +82,7 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-white text-xl font-medium">
-                    Empowering students since 2021
+                    Empowering students since 2022
                   </p>
                 </div>
               </div>

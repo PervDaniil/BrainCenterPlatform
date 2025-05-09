@@ -36,7 +36,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
         >
-          <motion.div variants={item} className="mb-6">
+          <motion.div variants={item} className="mb-16">
             <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
               Elevate Your Skills with Brain Center
             </span>
@@ -44,10 +44,11 @@ export default function Hero() {
 
           <motion.h1
             variants={item}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
           >
             Unlock Your Potential with{" "}
-            <span className="text-primary">Expert-Led</span> Education
+            <br />
+            <span className="text-primary">Brain Center</span> Education
           </motion.h1>
 
           <motion.p

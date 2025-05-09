@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BookOpen, GraduationCap } from "lucide-react";
+import { Menu, X, BrainIcon } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -55,13 +55,13 @@ export default function Navbar() {
             className="flex items-center space-x-2"
           >
             <Link href="/" className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
+              <BrainIcon className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold">Brain Center</span>
             </Link>
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8 lg:space-x-28">
             {navItems.map((item, i) => (
               <motion.div
                 key={item.name}
@@ -95,7 +95,7 @@ export default function Navbar() {
               className="hidden md:block"
             >
               <Link href="/dashboard">
-                <Button>Student Login</Button>
+                <Button>Sign in</Button>
               </Link>
             </motion.div>
 
