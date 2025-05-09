@@ -83,7 +83,7 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-white text-xl font-medium">
-                    Empowering students since 2022
+                    Keiin International Institute
                   </p>
                 </div>
               </div>
