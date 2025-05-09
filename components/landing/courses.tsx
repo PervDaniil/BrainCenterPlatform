@@ -7,13 +7,14 @@ import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
+import { Variants } from "framer-motion";
 
 // Define our courses data
 const courses = [
@@ -92,10 +93,28 @@ const courses = [
 ];
 
 // Map categories to colors
-const categoryColors = {
-  Language: "primary",
-  Office: "chart-1",
-  Programming: "chart-2",
+const categoryColors: Record<string, string> = {
+  Language: "bg-primary",
+  Office: "bg-chart-1",
+  Programming: "bg-chart-2",
+}
+
+type Course = {
+  id: number;
+  title: string;
+  category: keyof typeof categoryColors;
+  level: string;
+  rating: number;
+  reviews: number;
+  lessons: number;
+  duration: string;
+  description: string;
+  image: string;
+};
+
+type CourseCardProps = {
+  course: Course;
+  variants?: Variants;
 };
 
 export default function Courses() {
@@ -116,6 +135,11 @@ export default function Courses() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  const defaultVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <section id="courses" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -130,7 +154,7 @@ export default function Courses() {
             Featured Courses
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Expand your skills with our most popular courses designed to help you 
+            Expand your skills with our most popular courses designed to help you
             succeed in today's competitive environment.
           </p>
         </motion.div>
@@ -176,7 +200,7 @@ export default function Courses() {
   );
 }
 
-function CourseCard({ course, variants = {} }) {
+function CourseCard({ course, variants = {} }: CourseCardProps) {
   return (
     <motion.div
       variants={variants}
@@ -201,14 +225,14 @@ function CourseCard({ course, variants = {} }) {
           </Badge>
         </div>
       </div>
-      
+
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-        
+
         <p className="text-muted-foreground mb-4">
           {course.description}
         </p>
-        
+
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <Star className="h-4 w-4 text-yellow-500 fill-yellow-500 mr-1" />
@@ -219,7 +243,7 @@ function CourseCard({ course, variants = {} }) {
             {course.lessons} lessons · {course.duration}
           </div>
         </div>
-        
+
         <Link href={`/courses/${course.id}`}>
           <Button variant="outline" className="w-full">
             View Course

@@ -54,7 +54,7 @@ const faqs = [
 export default function FAQ() {
   return (
     <section id="faq" className="py-20 bg-muted/30">
-      <div className="container flex flex-col md:flex-row lg:flex-row flex-wrap mx-auto">
+      <div className="container flex flex-col md:flex-row lg:flex-row flex-wrap mx-auto space-y-24 lg:space-y-0">
         <div className="flex-1 px-8 md:px-12 lg:px-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

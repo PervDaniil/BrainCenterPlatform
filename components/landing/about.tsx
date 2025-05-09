@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 
 export default function About() {
   const sectionRef = useRef(null);
