@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { enrolledCourses } from "@/assets/data/dashboard";
 import CoursesTab from "@/components/dashboard/courses-tab";
+import CircleChart from "@/components/dashboard/circle-chart";
+import LineGradientChart from "@/components/dashboard/line-chart";
 import AssignmentsTab from "@/components/dashboard/assignments-tab";
 import CardsStatistics from "@/components/dashboard/cards-statistics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 
 
 export default function Dashboard() {
@@ -49,7 +52,7 @@ export default function Dashboard() {
                             </CardHeader>
                             <CardContent>
                                 <div className="h-[300px]">
-                                    {/*  Line chart here */}
+                                    <LineGradientChart />
                                 </div>
                             </CardContent>
                         </Card>
@@ -60,7 +63,7 @@ export default function Dashboard() {
                             </CardHeader>
                             <CardContent>
                                 <div className="h-[300px] flex items-center justify-center">
-                                    {/* Chart here */}
+                                    <CircleChart />
                                 </div>
                             </CardContent>
                         </Card>
