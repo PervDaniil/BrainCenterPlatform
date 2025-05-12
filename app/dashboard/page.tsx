@@ -33,7 +33,7 @@ export default function Dashboard() {
             </div>
 
             <Tabs defaultValue="overview" className="space-y-8 px-4 md:px-12 lg:px-20">
-                <TabsList className="grid grid-cols-3 md:grid-cols-6 max-w-[600px]">
+                <TabsList className="overflow-auto grid grid-cols-3 md:grid md:grid-cols-6 max-w-[600px]">
                     <TabsTrigger value="overview" onClick={() => setSelectedTab("overview")}>Overview</TabsTrigger>
                     <TabsTrigger value="courses" onClick={() => setSelectedTab("courses")}>Courses</TabsTrigger>
                     <TabsTrigger value="assignments" onClick={() => setSelectedTab("assignments")}>Assignments</TabsTrigger>
@@ -51,7 +51,7 @@ export default function Dashboard() {
                                 <CardTitle>Learning Progress</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <div className="h-[300px]">
+                                <div className="h-auto md:h-[260px] lg:h-[300px]">
                                     <LineGradientChart />
                                 </div>
                             </CardContent>
@@ -62,9 +62,10 @@ export default function Dashboard() {
                                 <CardTitle>Time Distribution</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <div className="h-[300px] flex items-center justify-center">
+                                <div className="h-auto md:h-[260px] lg:h-[300px] flex items-center justify-center">
                                     <CircleChart />
                                 </div>
+                                <p className="text-xs text-center">For current week</p>
                             </CardContent>
                         </Card>
                     </div>

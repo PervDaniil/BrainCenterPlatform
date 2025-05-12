@@ -18,11 +18,11 @@ export default function LineGradientChart() {
     ]
     const chartConfig = {
         desktop: {
-            label: "Desktop",
+            label: "Tasks",
             color: "hsl(var(--chart-1))",
         },
         mobile: {
-            label: "Mobile",
+            label: "Time",
             color: "hsl(var(--chart-2))",
         },
     } satisfies ChartConfig;
