@@ -1,13 +1,14 @@
-export async function fetchQuizQuestions(level: string) {
+export async function fetchQuizQuestions(level: string, area = "common") {
   const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
   
-  const prompt = `Make one English Grammar quiz test that consists of 1 question for ${level} English level.
+  const prompt = `Make one English Grammar quiz test for ${area} area that consists of 1 question for ${level} English level.
   Response must be in JSON format like:
   [
     {
-      "question": "I ___ a programmer",
-      "answers": ["am", "is", "are", "were"],
-      "correct": 0
+      "question": "...",
+      "answers": ["...", "...", "...", "..."],
+      "correct": 0,
+      "explanation" : "...",
     }
   ]`;
 

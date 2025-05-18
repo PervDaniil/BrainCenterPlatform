@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import {
   ArrowRight,
   Globe,
@@ -19,11 +19,14 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/landing/footer";
+import BadgesBox from "@/components/quiz/badges-box";
+import SearchInput from "@/components/quiz/search-bar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 
 export default function QuizPage() {
-  const [level, setLevel] = useState("");
+  const [level, setLevel] = useState("a1");
+  const [area, setArea] = useState<string>("common");
 
   return (
     <div>
@@ -46,6 +49,12 @@ export default function QuizPage() {
           </motion.div>
 
           <div className="max-w-md mx-auto mb-12">
+            <Card className="mt-12 mb-4">
+              <div className="px-4 pt-4">
+                <SearchInput />
+              </div>
+              <BadgesBox setValueProps={setArea} />
+            </Card>
             <Card>
               <CardHeader>
                 <CardTitle>Select Your Level</CardTitle>
@@ -111,18 +120,10 @@ export default function QuizPage() {
                         <span>{category.time}</span>
                       </div>
                       <Link
-                        href={
-                          level
-                            ? `/quiz/${level}/${category.id}`
-                            : "#"
-                        }
-                        onClick={(e) => {
-                          if (!level) {
-                            e.preventDefault();
-                            alert("Please select a proficiency level first");
-                          }
-                        }}
-                      >
+                        href={{
+                          pathname: `/quiz/${level}/${category.id}`,
+                          query: { area: area, context: null },
+                        }}>
                         <Button className="w-full">
                           Start Quiz <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>

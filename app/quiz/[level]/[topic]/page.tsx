@@ -11,7 +11,14 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function Page({ params }: { params: { level: string; topic: string } }) {
+interface IQuizGamePageParams{
+  params: {
+    level: string
+    topic: string
+  }
+}
+
+export default function Page({ params }: IQuizGamePageParams) {
   return (
     <QuizGame params={params} />
   );
