@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BrainIcon } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import { Menu, X, BrainIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/theme-toggle";
+import SwitchLanguageButton from "./switch-language";
+import { Button } from "@/components/ui/button";
+import { useUser } from "@/hooks/useUser";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -17,6 +19,7 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const user = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -94,8 +97,17 @@ export default function Navbar() {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="hidden md:block"
             >
+              <SwitchLanguageButton />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="hidden md:block"
+            >
               <Link href="/dashboard">
-                <Button>Sign in</Button>
+                <Button>{user ? 'Dashboard' : 'Sign in'}</Button>
               </Link>
             </motion.div>
 
@@ -138,7 +150,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                <Button className="w-full">Student Login</Button>
+                <Button className="my-4 w-full"><p>{user ? 'Dashboard' : 'Login'}</p></Button>
               </Link>
             </div>
           </motion.div>

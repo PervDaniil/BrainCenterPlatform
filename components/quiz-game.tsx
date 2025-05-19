@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import TimerComponent from "./quiz/timer";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,6 @@ import { fetchQuizQuestions } from "@/utils/quiz-fetch";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import Link from "next/link";
 
 
 interface IQuizGameParams {
@@ -32,7 +32,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
   async function fetchQuestions() {
     setLoading(true);
     try {
-      const quizes = await fetchQuizQuestions(level, area? area : "common");
+      const quizes = await fetchQuizQuestions(level, area ? area : "common");
       setQuestions(quizes);
     } catch (err) {
       console.error(err);
@@ -59,7 +59,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
   };
 
   return (
-    <main className="relative w-full h-screen overflow-hidden grid place-content-center">
+    <main className="bg-[url('https://images.unsplash.com/photo-1668681919287-7367677cdc4c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhY2tncm91bmQlMjBhYnN0cmFjdHxlbnwwfHwwfHx8MA%3D%3D')] bg-cover relative w-full h-screen overflow-hidden grid place-content-center">
       <AnimatePresence>
         {showAnimation && (
           <motion.div
@@ -78,7 +78,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <Card className="relative py-4 px-0 lg:py-6 lg:px-3 overflow-y-auto max-h-[70vh] lg:max-w-md">
+        <Card className="relative backdrop-blur-lg bg-transparent py-4 px-0 lg:py-6 lg:px-3 overflow-y-auto max-h-[70vh] lg:max-w-md">
           <CardHeader>
             <CardTitle className="text-center text-2xl">
               English Quiz: {topic.charAt(0).toUpperCase() + topic.slice(1)} ({level.toUpperCase()})
@@ -99,7 +99,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: index * 0.1 }}>
-                  <Card className="p-4">
+                  <Card className="bg-transparent border-none p-4">
                     <h2 className="text-sm lg:text-lg font-semibold max-h-24 overflow-y-auto mb-4 max-w-xs lg:max-w-lg">{question.question}</h2>
                     <div className="space-y-3">
                       {question.answers.map((answer: string, i: number) => (
@@ -107,7 +107,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
                           key={i}
                           onClick={() => HandleAnswer(i)}
                           variant="outline"
-                          className="h-auto w-full whitespace-normal break-words"
+                          className="h-auto w-full whitespace-normal break-words bg-transparent backdrop-blur-sm"
                         >
                           <span>
                             {answer}
@@ -123,7 +123,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
           <CardFooter className="px-6 py-0">
             <div className="w-full flex flex-row items-center justify-between">
               <Dialog>
-                <DialogTrigger><InfoIcon className="cursor-pointer" /></DialogTrigger>
+                <DialogTrigger><InfoIcon className="w-5 cursor-pointer" /></DialogTrigger>
                 <DialogContent>
                   <DialogTitle>Explanation</DialogTitle>
                   {questions.map(question => (
@@ -135,7 +135,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
               </Dialog>
               <div>
                 <Link href={"/quiz"}>
-                  <HomeIcon className="cursor-pointer" />
+                  <HomeIcon className="w-5 cursor-pointer" />
                 </Link>
               </div>
             </div>
