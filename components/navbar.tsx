@@ -139,6 +139,9 @@ export default function Navbar() {
             className="md:hidden border-t"
           >
             <div className="bg-background/95 backdrop-blur-sm px-4 py-5 space-y-4">
+              <div className="w-full flex items-center justify-end">
+                <SwitchLanguageButton />
+              </div>
               {navItems.map((item, i) => (
                 <Link
                   key={item.name}
@@ -146,7 +149,7 @@ export default function Navbar() {
                   className="block py-2 text-sm font-medium transition-colors hover:text-primary"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  <p className="pl-2">{item.name}</p>
                 </Link>
               ))}
               <Link href="/dashboard" onClick={() => setIsOpen(false)}>

@@ -34,7 +34,7 @@ export default function SwitchLanguageButton() {
                     <LanguagesIcon />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
+            <DropdownMenuContent className="w-full lg:w-56">
                 <div className="relative py-2 px-1">
                     <Search className="cursor-pointer absolute left-5 top-4 w-4" />
                     <Input
