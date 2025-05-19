@@ -11,12 +11,12 @@ const formatTime = (seconds: number) => {
 }
 
 export default function TimerComponent() {
-    const [seconds, setSeconds] = useState(0)
+    const [seconds, setSeconds] = useState(15)
     const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
-            setSeconds((prev) => prev + 1)
+            setSeconds((prev) => prev - 1)
         }, 1000)
 
         return () => {
@@ -26,7 +26,7 @@ export default function TimerComponent() {
 
 
     return (
-        <Card className="w-full max-w-sm mx-auto shadow-lg rounded-2xl p-4 px-6">
+        <Card className="w-full max-w-sm mx-auto shadow-lg rounded-lg p-4 px-6">
             <div className="text-3xl font-mono tracking-widest">{formatTime(seconds)}</div>
         </Card>
     )
