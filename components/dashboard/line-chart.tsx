@@ -1,4 +1,5 @@
 "use client"
+import { MONTHS } from "@/constants/months";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import {
     ChartConfig,
@@ -7,15 +8,23 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart";
 
+
 export default function LineGradientChart() {
+    const currentMonthIndex = new Date().getMonth();
+
+    const getWrappedMonth = (index: number) => {
+        return MONTHS[(index + 12) % 12];
+    }
+
     const chartData = [
-        { month: "January", desktop: 186, mobile: 80 },
-        { month: "February", desktop: 305, mobile: 200 },
-        { month: "March", desktop: 237, mobile: 120 },
-        { month: "April", desktop: 73, mobile: 190 },
-        { month: "May", desktop: 209, mobile: 130 },
-        { month: "June", desktop: 214, mobile: 140 },
-    ]
+        { month: getWrappedMonth(currentMonthIndex - 5), desktop: 186, mobile: 80 },
+        { month: getWrappedMonth(currentMonthIndex - 4), desktop: 305, mobile: 200 },
+        { month: getWrappedMonth(currentMonthIndex - 3), desktop: 237, mobile: 120 },
+        { month: getWrappedMonth(currentMonthIndex - 2), desktop: 73, mobile: 190 },
+        { month: getWrappedMonth(currentMonthIndex - 1), desktop: 209, mobile: 130 },
+        { month: getWrappedMonth(currentMonthIndex),     desktop: 214, mobile: 140 },
+    ];
+
     const chartConfig = {
         desktop: {
             label: "Tasks",

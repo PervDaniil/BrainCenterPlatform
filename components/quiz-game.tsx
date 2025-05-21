@@ -50,21 +50,23 @@ export default function QuizGame({ params }: IQuizGameParams) {
   const HandleAnswer = async (index: number) => {
     if (!questions.length) return;
 
+    const correct = index === questions[0].correct;
+
     const quizEntry = {
+      area: area,
       question: questions[0].question,
       topic: questions[0].topic,
-      failed: false,
+      failed: !correct,
       timestamp: new Date(),
     };
 
-    const correct = index === questions[0].correct;
     setIsCorrect(correct);
     setShowAnimation(true);
 
     setTimeout(() => setShowAnimation(false), 500);
     fetchQuestions();
 
-    if (correct && user) {
+    if (user) {
       const userRef = doc(db, "users-statistics", user.uid);
       const docSnap = await getDoc(userRef);
 
@@ -85,7 +87,7 @@ export default function QuizGame({ params }: IQuizGameParams) {
       <AnimatePresence>
         {showAnimation && (
           <motion.div
-            className={`absolute top-0 left-0 w-full h-full z-30 ${isCorrect ? "bg-green-500" : "bg-red-700" }`}
+            className={`absolute top-0 left-0 w-full h-full z-30 ${isCorrect ? "bg-green-500" : "bg-red-700"}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}

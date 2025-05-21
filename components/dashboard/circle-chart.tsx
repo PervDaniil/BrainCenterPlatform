@@ -10,11 +10,6 @@ import {
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 
-const chartData = [
-    { browser: "safari", visitors: 17, fill: "var(--color-safari)" },
-]
-
-
 const chartConfig = {
     visitors: {
         label: "Visitors",
@@ -26,7 +21,11 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 
-export default function CircleChart() {
+export default function CircleChart({ amount }: { amount: number }) {
+    const chartData = [
+        { browser: "safari", visitors: amount, fill: "var(--color-safari)" },
+    ]
+
     return (
         <ChartContainer
             config={chartConfig}
@@ -69,7 +68,7 @@ export default function CircleChart() {
                                             y={(viewBox.cy || 0) + 24}
                                             className="fill-muted-foreground"
                                         >
-                                            Hours
+                                            Quizes
                                         </tspan>
                                     </text>
                                 )
