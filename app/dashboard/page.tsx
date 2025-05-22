@@ -19,7 +19,7 @@ export default function Dashboard() {
                 <WelcomeSection user={user} />
 
                 <DashboardTabs>
-                    <OverviewTab userData={userData} />
+                    <OverviewTab userData={userData.data} />
                     <CoursesTab2 />
                     <AnalyticsTab userData={userData.data}/>
                 </DashboardTabs>

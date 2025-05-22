@@ -1,25 +1,13 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import AskAISection from "./ask-ai-section";
 import { PieChartComponent } from "./pie-chart";
 import SkillInsightCard from "./skill-insights";
 import { TabsContent } from "@/components/ui/tabs";
 import { RadarChartComponent } from "./radar-chart";
-import { Textarea } from "@/components/ui/textarea";
 import { HorizontalBarChart } from "./horiz-bar-chart";
 import { calculateProficiencyLevel } from "@/utils/caclulateProficiency";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, CheckCircle, TrendingUp, Clock, AlertTriangleIcon } from "lucide-react";
 
-
-const suggestions = [
-  "Career Advice",
-  "Productivity",
-  "Wellness",
-  "Tech Trends",
-  "Relationships",
-  "Personal Finance",
-  "Learning Strategies"
-];
 
 type AnalyticsTabProps = {
   userData: any;
@@ -117,26 +105,7 @@ export default function AnalyticsTab ({ userData }: AnalyticsTabProps) {
           </div>
         </Card>
 
-      <Card className="mt-6 p-4 lg:py-8 lg:px-12 grid lg:grid-cols-2 gap-6">
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-lg font-semibold">Ask AI for Help</h2>
-          <Textarea placeholder="Describe your situation or ask a question..." className="min-h-[150px]" />
-          <Button className="w-full">Submit</Button>
-        </div>
-            
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-lg font-semibold">Select Topics of Interest</h2>
-          <div className="flex flex-wrap gap-2">
-            {suggestions.map((topic) => (
-              <Badge
-                key={topic}
-                variant="outline">
-                {topic}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </Card>
+      <AskAISection />
     </TabsContent>
   );
 };
