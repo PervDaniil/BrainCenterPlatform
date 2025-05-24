@@ -31,7 +31,7 @@ export default function LineGradientChart() {
             color: "hsl(var(--chart-1))",
         },
         mobile: {
-            label: "Time",
+            label: "Correct",
             color: "hsl(var(--chart-2))",
         },
     } satisfies ChartConfig;
@@ -46,7 +46,7 @@ export default function LineGradientChart() {
                     right: 12,
                 }}
             >
-                <CartesianGrid vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="month"
                     tickLine={false}

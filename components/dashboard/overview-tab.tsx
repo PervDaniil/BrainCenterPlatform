@@ -1,4 +1,5 @@
 import { Clock } from "lucide-react";
+import { Toaster } from "../ui/toaster";
 import { Button } from "@/components/ui/button";
 import { TabsContent } from "@/components/ui/tabs";
 import { enrolledCourses } from "@/assets/data/dashboard";
@@ -17,6 +18,7 @@ export default function OverviewTab({ userData }: OverviewTabProps) {
   return (
     <TabsContent value="overview" className="space-y-8">
       <CardsStatistics />
+      <Toaster />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2">
@@ -30,14 +32,7 @@ export default function OverviewTab({ userData }: OverviewTabProps) {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Successfully Passed</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center h-[260px] lg:h-[300px]">
-            <CircleChart amount={passedQuizzes.length} />
-          </CardContent>
-        </Card>
+        <CircleChart amount={passedQuizzes.length} />
       </div>
 
       <h2 className="text-2xl font-bold mt-8">Your Courses</h2>

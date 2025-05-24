@@ -2,6 +2,7 @@
 
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { DAYS_OF_THE_WEEK } from "@/constants/weekdays"
 
 import {
   Card,
@@ -17,14 +18,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
 
 const chartConfig = {
   desktop: {
@@ -34,6 +27,17 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function HorizontalBarChart() {
+  const todayWeekIndex = new Date().getDay();
+
+  const chartData = [
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex], desktop: 186 },
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex - 1], desktop: 305 },
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex - 2], desktop: 237 },
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex - 3], desktop: 73 },
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex - 4], desktop: 209 },
+    { month: DAYS_OF_THE_WEEK[todayWeekIndex - 5], desktop: 214 },
+  ]
+  
   return (
     <Card className="border-none">
       <CardHeader>

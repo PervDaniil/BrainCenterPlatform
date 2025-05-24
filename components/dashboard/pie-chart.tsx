@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/chart"
 const chartData = [
   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
   { browser: "other", visitors: 90, fill: "var(--color-other)" },
@@ -27,26 +26,22 @@ const chartData = [
 
 const chartConfig = {
   visitors: {
-    label: "Visitors",
+    label: "English aspects",
   },
   chrome: {
-    label: "Chrome",
+    label: "Grammar",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
-    color: "hsl(var(--chart-2))",
-  },
   firefox: {
-    label: "Firefox",
+    label: "Speaking",
     color: "hsl(var(--chart-3))",
   },
   edge: {
-    label: "Edge",
+    label: "Listening",
     color: "hsl(var(--chart-4))",
   },
   other: {
-    label: "Other",
+    label: "Reading",
     color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
