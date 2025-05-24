@@ -15,7 +15,7 @@ const navItems = [
   { name: "Courses", href: "/courses" },
   { name: "About", href: "/#about" },
   { name: "FAQ", href: "/#faq" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Quizes", href: "quiz/" },
 ];
 
 export default function Navbar() {
