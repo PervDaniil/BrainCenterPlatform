@@ -99,10 +99,6 @@ export default function QuizGame({ params }: IQuizGameParams) {
       <motion.div className="max-w-2xl mx-auto p-6 z-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
         <QuizBlock topic={topic} level={level} loading={loading} error={error} questions={questions} handleAnswer={HandleAnswer} />
       </motion.div>
-
-      <div className="absolute bottom-5 left-5">
-        <TimerComponent />
-      </div>
     </main>
   );
 }

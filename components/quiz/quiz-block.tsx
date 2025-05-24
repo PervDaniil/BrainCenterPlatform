@@ -1,7 +1,7 @@
 "use client";
-
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HomeIcon, InfoIcon, Loader2 } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,8 +22,31 @@ interface IQuizBlock {
 }
 
 export default function QuizBlock({ topic, level, loading, error, questions, handleAnswer }: IQuizBlock) {
+    const [timeLeft, setTimeLeft] = useState(12);
+
+    useEffect(() => {
+        if (loading || error) return;
+
+        setTimeLeft(12);
+
+        const timer = setInterval(() => {
+            setTimeLeft((prev) => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [loading, error]);
+
+    const progressPercent = ((12 - timeLeft) / 12) * 100;
+    
     return (
         <Card className="relative backdrop-blur-lg bg-transparent py-4 px-0 lg:py-6 lg:px-3 overflow-y-auto max-h-[70vh] lg:max-w-md">
+            <div style={{ width: `${progressPercent}%` }} className="absolute top-0 left-0 bg-accent-foreground h-1 duration-250 transition-all"></div>
             <CardHeader>
                 <CardTitle className="text-center text-2xl">
                     English Quiz: {topic.charAt(0).toUpperCase() + topic.slice(1)} (

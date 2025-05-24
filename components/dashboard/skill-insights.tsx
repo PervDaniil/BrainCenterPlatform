@@ -36,7 +36,7 @@ const SkillInsightCard = ({ aspect, description, icon }: SkillInsightCardProps) 
       </CardContent>
 
       <CardFooter>
-        <Badge variant="default">Suggestion</Badge>
+        <Badge className="font-light" variant="outline">...</Badge>
       </CardFooter>
     </Card>
   );
