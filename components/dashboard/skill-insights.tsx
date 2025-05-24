@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
+import { useGetSkillInsights } from "@/hooks/useGetSkillInsights";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -11,6 +12,8 @@ type SkillInsightCardProps = {
 };
 
 const SkillInsightCard = ({ aspect, description, icon }: SkillInsightCardProps) => {
+  const { suggestions, loading, error } = useGetSkillInsights(aspect);
+
   return (
     <Card className="transition-all hover:shadow-lg">
       <CardHeader>
@@ -34,9 +37,22 @@ const SkillInsightCard = ({ aspect, description, icon }: SkillInsightCardProps) 
           </AccordionItem>
         </Accordion>
       </CardContent>
-
-      <CardFooter>
-        <Badge className="font-light" variant="outline">...</Badge>
+      <CardFooter className="flex flex-wrap gap-2">
+        {loading ? (
+          <Badge variant="outline">Loading...</Badge>
+        ) : error ? (
+          <Badge variant="destructive">Error loading insights</Badge>
+        ) : suggestions && suggestions.length > 0 ? (
+          suggestions.map((item, index) => (
+            <Badge key={index} variant="outline" className="font-light">
+              {item.suggestion}
+            </Badge>
+          ))
+        ) : (
+          <Badge variant="outline" className="font-light">
+            No insights available
+          </Badge>
+        )}
       </CardFooter>
     </Card>
   );

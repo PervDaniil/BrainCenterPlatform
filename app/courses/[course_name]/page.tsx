@@ -9,9 +9,7 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: { params: { course_name: string } }) {
-  const { course_name } = params;
-
   return (
-    <CoursePage course_name={course_name} />
+    <CoursePage params={params} />
 )
 }
