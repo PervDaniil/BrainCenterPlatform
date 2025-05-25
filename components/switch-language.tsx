@@ -17,7 +17,7 @@ export default function SwitchLanguageButton() {
     );
 
     const handleChangeLanguage = (lang: string) => {
-        const URL = `https://pervdaniil-github-io.translate.goog/BrainCenterPlatform/?_x_tr_sl=auto&_x_tr_tl=${lang}&_x_tr_hl=${lang}&_x_tr_pto=wapp&_x_tr_hist=true#dashboard`;
+        const URL = `https://pervdaniil-github-io.translate.goog/BrainCenterPlatform/?_x_tr_sl=auto&_x_tr_tl=${lang}&_x_tr_hl=${lang}&_x_tr_pto=wapp&_x_tr_hist=true`;
         window.location.href = URL;
     }
 
