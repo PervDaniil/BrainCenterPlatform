@@ -6,7 +6,7 @@ interface Suggestion {
     suggestion: string;
 }
 
-export function useGetSkillInsights(aspect: string) {
+export function useGetSkillInsights(aspect: string, requestDelay: number) {
     const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
     const user = useUser();
@@ -22,51 +22,56 @@ export function useGetSkillInsights(aspect: string) {
             return;
         }
 
-        async function fetchSuggestions() {
-            setLoading(true);
-            setError(null);
+        const timer = setTimeout(() => {
+            async function fetchSuggestions() {
+                setLoading(true);
+                setError(null);
 
-            try {
-                const prompt = `Make suggestions based on this data: ${JSON.stringify(userData)} for this English aspect: ${aspect}.
-                        Response must be like [{ suggestion: "..." }]. Quantity of suggestions must be 4.
-                        Suggestion must include less than 8 words`;
+                try {
+                    const prompt = `Make suggestions based on this data: ${JSON.stringify(userData)} for this English aspect: ${aspect}.
+                    Response must be like [{ suggestion: "..." }]. Quantity of suggestions must be 4.
+                    Suggestion must include less than 8 words`;
 
-                const response = await fetch(
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: prompt }] }],
-                        }),
+                    const response = await fetch(
+                        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+                        {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                contents: [{ parts: [{ text: prompt }] }],
+                            }),
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.statusText}`);
                     }
-                );
 
-                if (!response.ok) {
-                    throw new Error(`API error: ${response.statusText}`);
+                    const data = await response.json();
+                    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (!text) {
+                        throw new Error("No suggestions received from API");
+                    }
+
+                    const cleanText = text.replace(/```json|```/g, "").trim();
+                    const parsedSuggestions = JSON.parse(cleanText) as Suggestion[];
+
+                    setSuggestions(parsedSuggestions);
+                } catch (err: any) {
+                    setError(err);
+                    setSuggestions(null);
+                } finally {
+                    setLoading(false);
                 }
-
-                const data = await response.json();
-                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (!text) {
-                    throw new Error("No suggestions received from API");
-                }
-
-                const cleanText = text.replace(/```json|```/g, "").trim();
-                const parsedSuggestions = JSON.parse(cleanText) as Suggestion[];
-                
-                setSuggestions(parsedSuggestions);
-            } catch (err: any) {
-                setError(err);
-                setSuggestions(null);
-            } finally {
-                setLoading(false);
             }
-        }
 
-        fetchSuggestions();
-    }, [aspect, userData]);
+            fetchSuggestions();
+        }, requestDelay);
+
+        return () => clearTimeout(timer);
+    }, [aspect, requestDelay, userData]);
+
 
     return {
         suggestions,

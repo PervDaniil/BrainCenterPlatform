@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
+import { AnimatePresence, motion } from "framer-motion";
 import { useGetSkillInsights } from "@/hooks/useGetSkillInsights";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -8,11 +9,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 type SkillInsightCardProps = {
   aspect: string;
   description: string;
+  requestDelay: number;
   icon: ReactNode;
 };
 
-const SkillInsightCard = ({ aspect, description, icon }: SkillInsightCardProps) => {
-  const { suggestions, loading, error } = useGetSkillInsights(aspect);
+const SkillInsightCard = ({ aspect, description, requestDelay, icon }: SkillInsightCardProps) => {
+  const { suggestions, loading, error } = useGetSkillInsights(aspect, requestDelay);
 
   return (
     <Card className="transition-all hover:shadow-lg">
@@ -43,11 +45,21 @@ const SkillInsightCard = ({ aspect, description, icon }: SkillInsightCardProps) 
         ) : error ? (
           <Badge variant="destructive">Error loading insights</Badge>
         ) : suggestions && suggestions.length > 0 ? (
-          suggestions.map((item, index) => (
-            <Badge key={index} variant="outline" className="font-light">
-              {item.suggestion}
-            </Badge>
-          ))
+          <AnimatePresence>
+            {suggestions.map((item, index) => (
+              <motion.div
+                key={item.suggestion + index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                <Badge variant="outline" className="font-light">
+                  {item.suggestion}
+                </Badge>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         ) : (
           <Badge variant="outline" className="font-light">
             No insights available

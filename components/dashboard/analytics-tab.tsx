@@ -100,7 +100,7 @@ export default function AnalyticsTab ({ userData }: AnalyticsTabProps) {
         <Card className="mt-4">
           <div className="p-4 lg:py-8 lg:px-12 grid lg:grid-cols-2 gap-y-6 gap-x-8">
             {skills.map((card, index) => (
-              <SkillInsightCard key={index} aspect={card.aspect} description={card.description} icon={card.icon} />
+              <SkillInsightCard key={index} aspect={card.aspect} description={card.description} requestDelay={index * 1500} icon={card.icon} />
             ))}
           </div>
         </Card>
